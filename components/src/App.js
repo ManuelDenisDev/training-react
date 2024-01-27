@@ -1,14 +1,13 @@
 import './App.css';
+import Title from './components/Title';
+import Paragraph from './components/Paragraph';
 
 function App() {
 	return (
-		<div>
-			<h1>Hello, World! Clena Template</h1>
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-				Quisquam, quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam. Lorem ipsum dolor sit amet
-				consectetur adipisicing elit. Quisquam, quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam.
-			</p>
+		<div className='main'>
+			<Title />
+			<Paragraph />
+			<Paragraph />
 		</div>
 	);
 }
