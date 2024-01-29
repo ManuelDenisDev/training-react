@@ -1,0 +1,68 @@
+.info-container {
+	padding: 1em;
+}
+
+.info-container h3,
+.info-container p {
+	font-family: 'Poppins', sans-serif;
+	font-weight: 300;
+	text-align: center;
+}
+
+.info-container h3 {
+	font-weight: 400;
+}
+
+.info-container p {
+	font-size: 1.3em;
+	color: #a5a5a5;
+}
+
+.hire {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1.2em;
+	margin: 2em 0;
+}
+
+.hire span.price {
+	color: #56bb4d;
+	font-weight: 600;
+}
+
+.hire .hire-button {
+	background-color: #2dced4;
+	font-size: 1.3em;
+	padding: 0.5em 1.4em;
+	color: white;
+	border: none;
+	border-radius: 100px;
+	cursor: pointer;
+}
+
+.rating {
+	display: flex;
+	align-items: center;
+	font-size: 0.9em;
+	margin: 1em 0;
+}
+
+.rating > div {
+	margin-right: 0.2em;
+	font-size: 1.3em;
+}
+
+.rating > div:first-of-type {
+	color: white;
+	background-color: #fdbd45;
+	padding: 0.1em 0.2em;
+}
+
+.rating > div:nth-child(2) {
+	color: #fdbd45;
+}
+
+.rating > div .fa-star {
+	margin-right: 0.175em;
+}

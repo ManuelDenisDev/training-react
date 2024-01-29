@@ -1,0 +1,58 @@
+.card-icons {
+	display: flex;
+	align-items: center;
+	margin: 1em 0;
+}
+
+.card-icons * {
+	font-size: 1.2em;
+	color: #8cc986;
+}
+
+.card-icons .verified {
+	font-size: 2em;
+	margin-right: 0.5em;
+	position: relative;
+	padding-right: 1.7em;
+}
+
+.card-icons .verified .fa-circle-check {
+	font-size: 2rem;
+}
+
+.card-icons .verified span {
+	font-size: 0.885rem;
+	color: white;
+	background-color: #8cc986;
+	padding: 0 6px 0 10px;
+	border-radius: 0 0.8rem 0.8rem 0;
+	position: absolute;
+	top: 8px;
+	left: 20px;
+	font-weight: 400;
+}
+
+.icons-circle {
+	display: flex;
+	align-items: center;
+}
+
+.card-icons .circle {
+	margin-right: 0.5em;
+	font-weight: 900;
+	border: 1px solid #8cc986;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.card-icons .not-available {
+	border: 1px solid #bcbcbc;
+}
+
+.card-icons .not-available * {
+	color: #bcbcbc;
+}
