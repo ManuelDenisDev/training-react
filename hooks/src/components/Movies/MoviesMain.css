@@ -1,0 +1,6 @@
+.main {
+	margin: 0 auto;
+	background-color: var(--dark);
+	padding: 2em;
+	max-width: 500px;
+}

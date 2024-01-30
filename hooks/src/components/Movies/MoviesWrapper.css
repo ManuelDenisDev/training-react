@@ -1,0 +1,6 @@
+.movies-wrapper {
+	background-color: var(--gray-dark);
+	padding: 2em;
+	min-height: 100vh;
+	border-radius: 0.8em;
+}
