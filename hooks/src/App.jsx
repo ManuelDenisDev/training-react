@@ -1,13 +1,13 @@
 import './App.css';
 
 // Componentes
-import RocketLaunching from './components/RocketLaunching';
+import Movies from './components/Movies';
 
 function App() {
 	return (
-		<div>
-			<RocketLaunching />;
-		</div>
+		<>
+			<Movies />
+		</>
 	);
 }
 
