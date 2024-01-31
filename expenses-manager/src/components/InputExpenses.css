@@ -1,0 +1,138 @@
+.new-expense {
+	position: relative;
+	width: 100%;
+	background-color: #237fcd;
+	padding: 2em;
+	border-radius: 0.3em;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
+.new-expense .item-icon {
+	position: absolute;
+	top: -18px;
+}
+
+.new-expense h2 {
+	flex-basis: 100%;
+}
+
+.new-expense h3 {
+	color: #f4ffff;
+}
+
+.form-container {
+	flex-basis: 50%;
+	max-width: 50%;
+	padding: 0.5em 3em;
+	display: flex;
+	flex-direction: column;
+	max-height: 150px;
+	transition: all 0.3s linear;
+}
+
+.new-expense input,
+.new-expense button,
+.new-expense select {
+	border-radius: 0.5em;
+	padding: 0.8em;
+	transition: all 0.15s ease-in-out;
+}
+
+.new-expense input:focus,
+.new-expense button:focus,
+.new-expense button:active:focus {
+	color: #303133;
+	background-color: #f4f5f9;
+	border-color: #18191b;
+	box-shadow: 0 0 0 0.25rem rgba(24, 25, 27, 0.25);
+	transition: all 0.15s ease-in-out;
+}
+
+.new-expense button {
+	background-color: #09b7e4;
+	color: #f4ffff;
+	font-weight: bold;
+	font-size: 1.2em;
+	margin: 3em 0 1em;
+	flex-basis: 30%;
+	cursor: pointer;
+}
+
+.income-container {
+	flex-direction: row;
+	justify-content: start;
+	align-items: flex-end;
+	position: relative;
+}
+
+.income-container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	width: 0;
+}
+
+/* Crear check box personalizado */
+
+.checkmark {
+	position: absolute;
+	bottom: 7px;
+	left: 150px;
+	height: 25px;
+	width: 25px;
+	background-color: #eee;
+	border-radius: 50%;
+	transition: background-color 0.15s ease-in-out;
+}
+
+/* On mouse over, añadimos un color de fondo al checkmark */
+
+.income-container:hover input ~ .checkmark {
+	background-color: #26272b;
+	transition: background-color 0.15s ease-in-out;
+}
+
+/* Cuando el input está marcado, añadimos un color de fondo al checkmark */
+
+.income-container input:checked ~ .checkmark {
+	background-color: #09b7e4;
+	transition: background-color 0.15s ease-in-out;
+}
+
+/* Crear el punto dentro del checkmark */
+
+.checkmark:after {
+	content: '';
+	position: absolute;
+	display: none;
+}
+
+/* Mostrar el punto cuando el input está marcado */
+
+.income-container input:checked ~ .checkmark:after {
+	display: block;
+}
+
+/* Estilizar el punto */
+
+.income-container .checkmark:after {
+	bottom: 9px;
+	left: 10px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+
+.hidden,
+.hidden .checkmark,
+button.hidden {
+	max-height: 0;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	transition: all 0.3s linear;
+}
