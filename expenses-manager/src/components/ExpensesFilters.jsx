@@ -1,7 +1,7 @@
 import './ExpensesFilters.css';
 
 // Hook
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // Components
 import Wrapper from './wrappers/Wrapper';
@@ -11,11 +11,19 @@ import { expensesStats } from '../utils/expensesStats';
 import { monthToString } from '../utils/monthToString';
 
 function ExpensesFilters(props) {
+	const [stats, setStats] = useState([0, 0]);
+
 	const [month, setMonth] = useState(monthToString(new Date().toLocaleDateString()));
 
-	const handleSelect = (e) => setMonth(e.target.value);
+	const handleSelect = (e) => {
+		setMonth(e.target.value);
+		props.onSelectMonth(e.target.value);
+	};
 
-	const stats = expensesStats(props.months);
+	useEffect(() => {
+		setStats(props.onStats);
+	}, [month, props.onStats]);
+
 	return (
 		<Wrapper
 			content={
@@ -24,13 +32,13 @@ function ExpensesFilters(props) {
 						<div className='label'>
 							<p>Incomes %</p>
 							<div className='bar'>
-								<div className='incomes' style={{ width: `${stats[0]}` }}></div>
+								<div className='incomes' style={{ width: `${stats[0]}%` }}></div>
 							</div>
 						</div>
 						<div className='label'>
 							<p>Expenses %</p>
 							<div className='bar'>
-								<div className='expenses' style={{ width: `${stats[1]}` }}></div>
+								<div className='expenses' style={{ width: `${stats[1]}%` }}></div>
 							</div>
 						</div>
 					</div>

@@ -9,15 +9,19 @@ import InputExpenses from './components/InputExpenses';
 
 function App() {
 	const [addExpense, setAddExpense] = useState({});
-	const saveNewExpense = (newExpense) => {
-		setAddExpense(newExpense);
+	const saveNewExpense = (expense) => {
+		setAddExpense(expense);
+	};
+
+	const handleExpense = () => {
+		setAddExpense({});
 	};
 
 	return (
 		<div className='main'>
 			<h1>Transactions</h1>
 			<InputExpenses onSaveNewExpense={saveNewExpense} />
-			<Expenses onNewExpense={addExpense} />
+			<Expenses onNewExpense={addExpense} onClearExpense={handleExpense} />
 		</div>
 	);
 }

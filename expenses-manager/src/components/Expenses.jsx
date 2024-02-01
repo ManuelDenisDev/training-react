@@ -2,23 +2,34 @@
 import { useState, useEffect } from 'react';
 
 // Components
+import ExpensesFilters from './ExpensesFilters';
 import Wrapper from './wrappers/Wrapper';
 import ItemContainer from './wrappers/ItemContainer';
 import ItemIcon from './items/ItemIcon';
 import ItemInfo from './items/ItenInfo';
 import ItemCost from './items/ItemCost';
+import InfoAlert from './alerts/InfoAlert';
 
 // Data
 import { itemsList, classes } from '../db/items';
 
+// Utils
+import { expensesStats } from '../utils/expensesStats';
+import { monthToString } from '../utils/monthToString';
+
 // Icons
 import { faChampagneGlasses, faSquare, faBriefcase, faCommentDollar, faSackDollar, faBoltLightning, faCar } from '@fortawesome/free-solid-svg-icons';
-import ExpensesFilters from './ExpensesFilters';
 
 function Expenses(props) {
+	const [filter, setFilter] = useState(monthToString(new Date().toLocaleDateString()));
+
 	const [expenses, setNewExpenses] = useState(itemsList);
 
-	// let expense = {};
+	const filteredMonth = (month) => {
+		setFilter(month);
+	};
+
+	let stats = [0, 0];
 
 	const getIcons = (category) => {
 		switch (category) {
@@ -35,9 +46,11 @@ function Expenses(props) {
 			case 'electricity':
 				return [faSquare, faBoltLightning];
 			default:
-				console.log(`category ${category} not found`);
+				return [faSquare, faSquare];
 		}
 	};
+
+	let filteredMonths = [];
 
 	useEffect(() => {
 		if (Object.keys(props.onNewExpense).length > 0) {
@@ -49,22 +62,35 @@ function Expenses(props) {
 			};
 
 			setNewExpenses([...expenses, expense]);
+			props.onClearExpense();
 		}
 	}, [props.onNewExpense]);
 
+	if (filter !== '') {
+		filteredMonths = expenses.filter((item) => monthToString(item.data.date) === filter);
+		if (filteredMonths.length > 0) {
+			stats = expensesStats(filteredMonths);
+		} else {
+			stats = [0, 0];
+		}
+	}
+
 	return (
 		<>
-			<ExpensesFilters months={expenses} />
+			<ExpensesFilters onStats={stats} onSelectMonth={filteredMonth} month={expenses} />
 			<Wrapper
-				content={expenses.map((item, index) => {
-					return (
-						<ItemContainer key={index}>
-							<ItemIcon icons={item.icons} classes={item.classes} />
-							<ItemInfo data={item.data} />
-							<ItemCost money={item.money} />
-						</ItemContainer>
-					);
-				})}
+				content={
+					(filteredMonths.length > 0 &&
+						filteredMonths.map((item, index) => {
+							return (
+								<ItemContainer key={index}>
+									<ItemIcon icons={item.icons} classes={item.classes} />
+									<ItemInfo data={item.data} />
+									<ItemCost money={item.money} />
+								</ItemContainer>
+							);
+						})) || <InfoAlert info='No expenses availables.' />
+				}
 			/>
 		</>
 	);
